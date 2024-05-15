@@ -86,7 +86,7 @@ class HomeAppbar extends StatelessWidget {
                       color: isTransperant
                           ? Colors.black.withOpacity(.5)
                           : Colors.transparent,
-                      child: Row(
+                      child: const Row(
                         children: [
                           SizedBox(
                             width: 10,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:netflix/screens/homepage/view/widgets/home_main_card.dart';
 import 'package:netflix/screens/homepage/view/widgets/homeappbar.dart';
+import 'package:netflix/screens/homepage/view/widgets/movie_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -24,10 +26,70 @@ class HomeScreen extends StatelessWidget {
       width: double.maxFinite,
       child: Stack(
         children: [
-          HomeAppbar(
-              colorNotifier: colorNotifier,
-              safeAreaHeight: safeAreaHeight,
-              tabBarNotifier: tabBarNotifier)
+          ListView(
+            controller: scrollController,
+            padding: EdgeInsets.zero,
+            children: [
+              // MovieWidet(),
+              HomeAppbar(
+                  colorNotifier: colorNotifier,
+                  safeAreaHeight: safeAreaHeight,
+                  tabBarNotifier: tabBarNotifier),
+              HomeMainCard(size: size),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Trending Now",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              MovieWidget(
+                text: 'Trending Now',
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Trending Now",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              MovieWidget(
+                text: 'Trending Now',
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Trending Now",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              MovieWidget(
+                text: 'Trending Now',
+              ),
+              const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  "Trending Now",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+              MovieWidget(
+                text: 'Trending Now',
+              )
+            ],
+          )
         ],
       ),
     );
