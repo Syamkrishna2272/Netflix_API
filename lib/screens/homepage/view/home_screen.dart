@@ -36,57 +36,25 @@ class HomeScreen extends StatelessWidget {
                   safeAreaHeight: safeAreaHeight,
                   tabBarNotifier: tabBarNotifier),
               HomeMainCard(size: size),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Trending Now",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-              ),
               MovieWidget(
                 text: 'Trending Now',
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Trending Now",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                mQuerySize: size,
               ),
               MovieWidget(
-                text: 'Trending Now',
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Trending Now",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                text: 'New Releases',
+                mQuerySize: size,
               ),
               MovieWidget(
-                text: 'Trending Now',
-              ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child: Text(
-                  "Trending Now",
-                  style: TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
+                text: 'Top 10 Movies',
+                mQuerySize: size,
               ),
               MovieWidget(
-                text: 'Trending Now',
+                text: 'Up Coming Movies',
+                mQuerySize: size,
+              ),
+              MovieWidget(
+                text: 'Airing Today',
+                mQuerySize: size,
               )
             ],
           )

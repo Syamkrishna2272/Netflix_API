@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/screens/homepage/view/home_screen.dart';
-import 'package:netflix/screens/secondpage/view/sample.dart';
+import 'package:netflix/screens/new&hotpage/view/new&hot_screen.dart';
 import 'package:netflix/screens/thirdpage/view/widgets/thirdsample.dart';
 
 class BottomNavScreen extends StatefulWidget {
@@ -13,13 +13,12 @@ class BottomNavScreen extends StatefulWidget {
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int currentindex = 0;
 
-  final List<Widget> pages = [HomeScreen(), Sample(), ThirdSample()];
+  final List<Widget> pages = [HomeScreen(), NewHotpage(), ThirdSample()];
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: pages[currentindex],
- 
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: currentindex,
           onTap: (index) {

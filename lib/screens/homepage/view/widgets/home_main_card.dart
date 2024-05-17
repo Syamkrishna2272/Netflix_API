@@ -28,7 +28,7 @@ class HomeMainCard extends StatelessWidget {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: NetworkImage(
-                      'https://m.media-amazon.com/images/M/MV5BNzNhMmEyMTEtNDVkMi00NWE2LWFiZTAtZGE0ZTgwMWQ4NzRiXkEyXkFqcGdeQXVyMjkxNzQ1NDI@._V1_FMjpg_UX1000_.jpg'),
+                      'https://m.media-amazon.com/images/I/81y0foYjoFL._AC_UF1000,1000_QL80_.jpg'),
                   fit: BoxFit.cover),
               boxShadow: [
                 BoxShadow(
