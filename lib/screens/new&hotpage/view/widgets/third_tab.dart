@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ThirdTabpage extends StatelessWidget {
-  ThirdTabpage({super.key});
+ const ThirdTabpage({super.key});
 
   // Future future;
 
@@ -12,66 +12,39 @@ class ThirdTabpage extends StatelessWidget {
         itemCount: 5,
         itemBuilder: (context, index) {
           return Container(
-            color: Colors.black,
-            height: size.height / 1.9,
+            height: size.height / 2.3,
             width: double.maxFinite,
+            color: Colors.black,
             child: Column(
               children: [
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5, right: 7),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10),
-                            child: Text(
-                              "month",
-                              style: const TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                          ),
-                          Text(
-                            "hi",
-                            style: const TextStyle(
-                                fontSize: 25,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 5, bottom: 5),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                                image: NetworkImage(
-                                    'https://mymodernmet.com/wp/wp-content/uploads/2021/04/Nature-Sounds-For-Well-Being-03.jpg'),
-                                fit: BoxFit.fill),
-                            borderRadius: BorderRadius.circular(10)),
-                        height: size.height / 3.8,
-                        width: (size.width / 1.3),
-                      ),
-                    ),
-                  ], 
+                Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        image: const DecorationImage(
+                            image: NetworkImage(
+                                'https://mymodernmet.com/wp/wp-content/uploads/2021/04/Nature-Sounds-For-Well-Being-03.jpg'),
+                            fit: BoxFit.fill),
+                        borderRadius: BorderRadius.circular(10)),
+                    height: size.height / 4,
+                  ),
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 45, top: 15),
-                      child: Text(
-                        "hi",
-                        maxLines: 2,
-                        style: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700,
-                            overflow: TextOverflow.ellipsis),
+                      padding: const EdgeInsets.only(left: 20, top: 15),
+                      child: SizedBox(
+                        width: size.width / 2.5,
+                        height: 50,
+                        child: const Text(
+                          "values.title",
+                          maxLines: 2,
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              overflow: TextOverflow.ellipsis),
+                        ),
                       ),
                     ),
                     Row(
@@ -83,17 +56,37 @@ class ThirdTabpage extends StatelessWidget {
                                 IconButton(
                                     onPressed: () {},
                                     icon: const Icon(
-                                      Icons.notifications_none_sharp,
+                                      Icons.share,
                                       size: 22,
                                     )),
                               ],
                             ),
                             const Text(
-                              'Remind Me',
-                              style:
-                                  TextStyle(color: Colors.white, fontSize: 13),
+                              "Share",
+                              style: TextStyle(fontSize: 12),
                             )
                           ],
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10),
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                        Icons.add,
+                                        size: 28,
+                                      )),
+                                ],
+                              ),
+                              const Text(
+                                "Add",
+                                style: TextStyle(fontSize: 12),
+                              )
+                            ],
+                          ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 10, right: 10),
@@ -104,16 +97,15 @@ class ThirdTabpage extends StatelessWidget {
                                   IconButton(
                                       onPressed: () {},
                                       icon: const Icon(
-                                        Icons.info_outline_rounded,
-                                        size: 22,
+                                        Icons.play_arrow,
+                                        size: 28,
                                       )),
                                 ],
                               ),
                               const Text(
-                                'Info',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 13),
-                              ),
+                                "Info",
+                                style: TextStyle(fontSize: 12),
+                              )
                             ],
                           ),
                         ),
@@ -121,30 +113,18 @@ class ThirdTabpage extends StatelessWidget {
                     )
                   ],
                 ),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 44),
-                      child: Text(
-                        'Coming ',
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w700, fontSize: 17),
-                      ),
-                    ),
-                  ],
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 44),
+                const Padding(
+                  padding: EdgeInsets.only(left: 10, right: 10),
                   child: Text(
                     "values.overview,",
                     maxLines: 3,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 14,
                         height: 1.3,
                         overflow: TextOverflow.ellipsis,
                         fontWeight: FontWeight.w400,
                         color: Colors.grey),
-                  ),
+                  ), 
                 ),
               ],
             ),

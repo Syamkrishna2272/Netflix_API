@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:netflix/screens/homepage/view/home_screen.dart';
 import 'package:netflix/screens/new&hotpage/view/new&hot_screen.dart';
-import 'package:netflix/screens/thirdpage/view/widgets/thirdsample.dart';
+import 'package:netflix/screens/downloadpage/view/download.dart';
+
 
 class BottomNavScreen extends StatefulWidget {
   const BottomNavScreen({super.key});
@@ -13,7 +14,7 @@ class BottomNavScreen extends StatefulWidget {
 class _BottomNavScreenState extends State<BottomNavScreen> {
   int currentindex = 0;
 
-  final List<Widget> pages = [HomeScreen(), NewHotpage(), ThirdSample()];
+  final List<Widget> pages = [HomeScreen(), NewHotpage(), Downloadpage()];
 
   @override
   Widget build(BuildContext context) {
