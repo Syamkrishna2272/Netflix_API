@@ -1,6 +1,8 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:netflix/screens/downloadpage/view/imagecard.dart';
 import 'package:netflix/screens/new&hotpage/view/widgets/new&hot_appbar.dart';
 
@@ -60,142 +62,56 @@ class Downloadpage extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10),
-                child: Center(
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: Alignment.center,
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: CircleAvatar(
-                            backgroundColor:
-                                const Color.fromARGB(255, 68, 68, 68),
-                            radius: size.width * .38,
-                          ),
+                child: Stack(
+                  children: [
+                    Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(15),
+                        child: CircleAvatar(
+                          backgroundColor:
+                              const Color.fromARGB(255, 68, 68, 68),
+                          radius: size.width * .33,
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 28),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: DownloadCard(
-                            angle: pi / 16,
-                            imagepath:
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqiBu7vjmwrGmXbOnrFxDgmmlYwh4OUomm9FnF0i8lvBuUyD3yWEd_38mV7nM_XQIktU8&usqp=CAU',
-                            height: size.height * .30,
-                            width: size.width * .35,
-                            margin: EdgeInsets.only(left: 150),
-                          ),
-                        ),
+                    ),
+                    Positioned(
+                      right: 33,
+                      top: 62,
+                      child: DownloadCard(
+                        angle: pi / 16,
+                        imagepath:
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqiBu7vjmwrGmXbOnrFxDgmmlYwh4OUomm9FnF0i8lvBuUyD3yWEd_38mV7nM_XQIktU8&usqp=CAU',
+                        height: size.height * .20,
+                        width: size.width * .30,
+                        margin: EdgeInsets.only(left: 150),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 28),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: DownloadCard(
-                            angle: pi / -16,
-                            imagepath:
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKoHgb3BtJjDQQjxwNVTM6Lfbe2f9iIA4_mQ&s',
-                            height: size.height * .30,
-                            width: size.width * .35,
-                            margin: EdgeInsets.only(right: 150),
-                          ),
-                        ),
+                    ),
+                    Positioned(
+                      // right: 35,
+                      left: 33,
+                      top: 62,
+
+                      child: DownloadCard(
+                        angle: pi / -16,
+                        imagepath:
+                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKoHgb3BtJjDQQjxwNVTM6Lfbe2f9iIA4_mQ&s',
+                        height: size.height * .20,
+                        width: size.width * .30,
+                        margin: EdgeInsets.only(right: 150),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 28),
-                        child: Align(
-                          alignment: Alignment.center,
-                          child: DownloadCard(
-                            angle: 0,
-                            imagepath:
-                                'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p16721608_p_v10_ab.jpg',
-                            height: size.width * .68,
-                            width: size.width * .35,
-                            // margin: EdgeInsets.only(left: 150),
-                          ),
-                        ),
-                      )
-                      // Align(
-                      //   alignment: Alignment.center,
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(top: 32),
-                      //     child: Transform.rotate(
-                      //       angle: 0.0, // No rotation for the center image
-                      //       child: SizedBox(
-                      //         height: size.height * .25,
-                      //         width: size.width * .40,
-                      //         child: ClipRRect(
-                      //           borderRadius: BorderRadius.circular(10),
-                      //           child: Container(
-                      //             decoration: const BoxDecoration(
-                      //               image: DecorationImage(
-                      //                 image: NetworkImage(
-                      //                   'https://m.media-amazon.com/images/M/MV5BZTdmOTVkNzgtODQyNS00YzA0LThkMzctNjUzODM3MjBkYWU2XkEyXkFqcGdeQXVyMTE5NjE5Mjc2._V1_.jpg',
-                      //                 ),
-                      //                 fit: BoxFit.cover,
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                      // Align(
-                      //   alignment: Alignment.centerLeft,
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(top: 32),
-                      //     child: Transform.rotate(
-                      //       angle: -0.3,
-                      //       child: SizedBox(
-                      //         height: size.height * .25,
-                      //         width: size.width * .40,
-                      //         child: ClipRRect(
-                      //           borderRadius: BorderRadius.circular(10),
-                      //           child: Container(
-                      //             decoration: const BoxDecoration(
-                      //               image: DecorationImage(
-                      //                 image: NetworkImage(
-                      //                   'https://m.media-amazon.com/images/M/MV5BZTdmOTVkNzgtODQyNS00YzA0LThkMzctNjUzODM3MjBkYWU2XkEyXkFqcGdeQXVyMTE5NjE5Mjc2._V1_.jpg',
-                      //                 ),
-                      //                 fit: BoxFit.cover,
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                      // Align(
-                      //   alignment: Alignment.centerRight,
-                      //   child: Padding(
-                      //     padding: const EdgeInsets.only(top: 32),
-                      //     child: Transform.rotate(
-                      //       angle: 0.3, // Rotate right image clockwise
-                      //       child: SizedBox(
-                      //         height: size.height * .25,
-                      //         width: size.width * .40,
-                      //         child: ClipRRect(
-                      //           borderRadius: BorderRadius.circular(10),
-                      //           child: Container(
-                      //             decoration: const BoxDecoration(
-                      //               image: DecorationImage(
-                      //                 image: NetworkImage(
-                      //                   'https://m.media-amazon.com/images/M/MV5BZTdmOTVkNzgtODQyNS00YzA0LThkMzctNjUzODM3MjBkYWU2XkEyXkFqcGdeQXVyMTE5NjE5Mjc2._V1_.jpg',
-                      //                 ),
-                      //                 fit: BoxFit.cover,
-                      //               ),
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
+                    ),
+                    Positioned(
+                      left: 117,
+                      top: 45,
+                      child: DownloadCard(
+                        angle: 0,
+                        imagepath:
+                            'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p16721608_p_v10_ab.jpg',
+                        height: size.width * .50,
+                        width: size.width * .35,
+                      ),
+                    )
+                  ],
                 ),
               ),
               Padding(
