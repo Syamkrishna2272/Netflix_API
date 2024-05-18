@@ -3,10 +3,16 @@ import 'package:flutter/rendering.dart';
 import 'package:netflix/screens/homepage/view/widgets/home_main_card.dart';
 import 'package:netflix/screens/homepage/view/widgets/homeappbar.dart';
 import 'package:netflix/screens/homepage/view/widgets/movie_widget.dart';
+import 'package:netflix/service/funtions.dart';
 
-class HomeScreen extends StatelessWidget {
-  HomeScreen({super.key});
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
 
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   final ScrollController scrollController = ScrollController();
 
   final ValueNotifier<bool> tabBarNotifier = ValueNotifier(true);
@@ -30,34 +36,75 @@ class HomeScreen extends StatelessWidget {
             controller: scrollController,
             padding: EdgeInsets.zero,
             children: [
-              // MovieWidet(),
-              HomeAppbar(
-                  colorNotifier: colorNotifier,
-                  safeAreaHeight: safeAreaHeight,
-                  tabBarNotifier: tabBarNotifier),
               HomeMainCard(size: size),
+
               MovieWidget(
                 text: 'Trending Now',
                 mQuerySize: size,
+                future: getnowplaying(),
               ),
+
               MovieWidget(
-                text: 'New Releases',
-                mQuerySize: size,
-              ),
+                  text: 'New Releases',
+                  mQuerySize: size,
+                  future: newReleases()),
+
               MovieWidget(
-                text: 'Top 10 Movies',
-                mQuerySize: size,
-              ),
+                  text: 'Top 10 Movies',
+                  mQuerySize: size,
+                  future: topRatedMovies()),
+
+              // Tvcard(
+              //     size: size,
+              //     text: 'Bingeworthy TV Dramas',
+              //     future: TvDramas()),
+
               MovieWidget(
-                text: 'Up Coming Movies',
-                mQuerySize: size,
-              ),
-              MovieWidget(
-                text: 'Airing Today',
-                mQuerySize: size,
-              )
+                  text: 'Up Coming Movies',
+                  mQuerySize: size,
+                  future: upcoming()),
+
+              // MovieWidget(
+              //     text: ' Top 10 Movies',
+              //     mQuerySize: size,
+              //     future: getnowplaying()),
+
+              // MovieWidget(
+              //     text: 'New Releases',
+              //     mQuerySize: size,
+              //     future: getnowplaying()),
+
+              // MovieWidget(
+              //     text: 'New Releases',
+              //     mQuerySize: size,
+              //     future: getnowplaying()),
+
+              // MovieWidget(
+              //     text: 'New Releases',
+              //     mQuerySize: size,
+              //     future: getnowplaying())
+              // MovieWidget(
+              //   text: 'New Releases',
+              //   mQuerySize: size,
+              // ),
+              // MovieWidget(
+              //   text: 'Top 10 Movies',
+              //   mQuerySize: size,
+              // ),
+              // MovieWidget(
+              //   text: 'Up Coming Movies',
+              //   mQuerySize: size,
+              // ),
+              // MovieWidget(
+              //   text: 'Airing Today',
+              //   mQuerySize: size,
+              // ),
             ],
-          )
+          ),
+          HomeAppbar(
+              colorNotifier: colorNotifier,
+              safeAreaHeight: safeAreaHeight,
+              tabBarNotifier: tabBarNotifier),
         ],
       ),
     );

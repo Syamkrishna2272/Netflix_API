@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:netflix/model/movie.dart';
+import 'package:netflix/service/api_service.dart';
+import 'package:netflix/service/funtions.dart';
+import 'package:palette_generator/palette_generator.dart';
 
 // ignore: must_be_immutable
 class HomeMainCard extends StatelessWidget {
@@ -7,93 +11,132 @@ class HomeMainCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final paletecolor=palate?.colors.first;
-    return Padding(
-      padding: const EdgeInsets.only(left: 15, right: 15),
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Colors.amber,
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.red],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            stops: [0.0, 2.0],
-            tileMode: TileMode.clamp,
-          ),
-        ),
-        width: double.infinity,
-        height: size.height * 0.60,
-        child: Container(
-          decoration: BoxDecoration(
-              image: DecorationImage(
-                  image: NetworkImage(
-                      'https://m.media-amazon.com/images/I/81y0foYjoFL._AC_UF1000,1000_QL80_.jpg'),
-                  fit: BoxFit.cover),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black.withOpacity(0.4),
-                    offset: Offset(0, 2),
-                    blurRadius: 10,
-                    spreadRadius: 5)
-              ],
-              borderRadius: BorderRadius.circular(20)),
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 35,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(150, 255, 255, 255),
-                        borderRadius: BorderRadius.circular(25)),
-                    child: const Center(
-                      child: Text(
-                        'Play',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w500),
+    return FutureBuilder(
+        future: getnowplaying(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator(color: Colors.transparent);
+          } else if (snapshot.hasError || !snapshot.hasData) {
+            return const Center(
+              child: Text('Somthing went wrong'),
+            );
+          }
+          final data = snapshot.data ?? [];
+          return FutureBuilder(
+              future: getPaletColor(data[data.length - 1]),
+              builder: (context, paletteGenerator) {
+                if (paletteGenerator.connectionState ==
+                    ConnectionState.waiting) {
+                  return const CircularProgressIndicator(
+                      color: Colors.transparent);
+                } else if (paletteGenerator.hasError ||
+                    !paletteGenerator.hasData) {
+                  return const Center(
+                    child: Text('Somthing went wrong'),
+                  );
+                }
+                final palette = paletteGenerator.data;
+                final paletteColor = palette?.colors.first;
+                return Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [paletteColor ?? Colors.grey, Colors.transparent],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      stops: const [0.0, 2.0],
+                      tileMode: TileMode.clamp,
+                    ),
+                  ),
+                  width: double.infinity,
+                  height: size.height * .78,
+                  child: Padding(
+                    padding: const EdgeInsets.only(
+                        top: 148, left: 20, right: 20, bottom: 20),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: NetworkImage(
+                              '$baseUrl${data[data.length - 1].posterpath}'),
+                          fit: BoxFit.cover,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.4),
+                            offset: const Offset(0, 2),
+                            blurRadius: 10,
+                            spreadRadius: 5,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 50),
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 44,
+                                  width: 125,
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          150, 255, 255, 255),
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: const Center(
+                                    child: Text(
+                                      'Play',
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {},
+                                child: Container(
+                                  height: 44,
+                                  width: 125,
+                                  decoration: BoxDecoration(
+                                      color: const Color.fromARGB(
+                                          150, 255, 255, 255),
+                                      borderRadius: BorderRadius.circular(25)),
+                                  child: const Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        Icons.add,
+                                        size: 18,
+                                        color: Colors.black,
+                                      ),
+                                      Text(
+                                        ' My List',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-                GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    height: 35,
-                    width: 100,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(150, 255, 255, 255),
-                        borderRadius: BorderRadius.circular(25)),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.add,
-                          size: 18,
-                          color: Colors.black,
-                        ),
-                        Text(
-                          ' My List',
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w500),
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
+                );
+              });
+        });
+  }
+
+  Future<PaletteGenerator> getPaletColor(Movie movie) async {
+    return await PaletteGenerator.fromImageProvider(
+        NetworkImage('$baseUrl${movie.posterpath}'));
   }
 }

@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:netflix/screens/downloadpage/view/imagecard.dart';
 import 'package:netflix/screens/new&hotpage/view/widgets/new&hot_appbar.dart';
+import 'package:netflix/service/api_service.dart';
+import 'package:netflix/service/funtions.dart';
 
 class Downloadpage extends StatelessWidget {
   const Downloadpage({super.key});
@@ -60,62 +62,148 @@ class Downloadpage extends StatelessWidget {
                       fontSize: 15, wordSpacing: 2, color: Colors.grey),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 10),
-                child: Stack(
-                  children: [
-                    Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: CircleAvatar(
-                          backgroundColor:
-                              const Color.fromARGB(255, 68, 68, 68),
-                          radius: size.width * .33,
-                        ),
-                      ),
-                    ),
-                    Positioned(
-                      right: 33,
-                      top: 62,
-                      child: DownloadCard(
-                        angle: pi / 16,
-                        imagepath:
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqiBu7vjmwrGmXbOnrFxDgmmlYwh4OUomm9FnF0i8lvBuUyD3yWEd_38mV7nM_XQIktU8&usqp=CAU',
-                        height: size.height * .20,
-                        width: size.width * .30,
-                        margin: EdgeInsets.only(left: 150),
-                      ),
-                    ),
-                    Positioned(
-                      // right: 35,
-                      left: 33,
-                      top: 62,
+              FutureBuilder(
+                  future: getnowplaying(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const CircularProgressIndicator(
+                          color: Colors.transparent);
+                    } else if (snapshot.hasError || !snapshot.hasData) {
+                      return const Center(
+                        child: Text('Somthing went wrong'),
+                      );
+                    }
+                    final data = snapshot.data ?? [];
+                    return Center(
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: Alignment.center,
+                            child: CircleAvatar(
+                              radius: size.width * .33,
+                              backgroundColor:
+                                  const Color.fromARGB(255, 68, 68, 68),
+                            ),
+                          ),
+                          Positioned(
+                            right: 33,
+                            top: 62 ,
+                            child: DownloadCard(
+                              angle: pi / 16,
+                              imagepath: '$baseUrl${data[0].coverImage}',
+                              height: size.height * .20,
+                              width: size.width * .30,
+                              margin: EdgeInsets.only(left: 150),
+                            ),
+                          ),
+                          Positioned(
+                            // right: 35,
+                            left: 33,
+                            top: 62,
+                            child: DownloadCard(
+                              angle: pi / -16,
+                              imagepath: '$baseUrl${data[1].coverImage}',
+                              height: size.height * .20,
+                              width: size.width * .30,
+                              margin: EdgeInsets.only(right: 150),
+                            ),
+                          ),
+                          Positioned(
+                            left: 117,
+                            top: 45,
+                            child: DownloadCard(
+                              angle: 0,
+                              imagepath: '$baseUrl${data[2].coverImage}',
+                              height: size.width * .50,
+                              width: size.width * .35,
+                            ),
+                          )
 
-                      child: DownloadCard(
-                        angle: pi / -16,
-                        imagepath:
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKoHgb3BtJjDQQjxwNVTM6Lfbe2f9iIA4_mQ&s',
-                        height: size.height * .20,
-                        width: size.width * .30,
-                        margin: EdgeInsets.only(right: 150),
+                          // Align(
+                          //     alignment: Alignment.center,
+                          //     child: DownloadCard(
+                          //         angle: pi / 16,
+                          //         imagepath: '$baseUrl${data[0].coverImage}',
+                          //         height: size.width * .45,
+                          //         width: size.width * .33,
+                          //         margin: const EdgeInsets.only(left: 150))),
+                          // Align(
+                          //     alignment: Alignment.center,
+                          //     child: DownloadCard(
+                          //         angle: pi / -16,
+                          //         imagepath: '$baseUrl${data[1].coverImage}',
+                          //         height: size.width * .45,
+                          //         width: size.width * .33,
+                          //         margin: const EdgeInsets.only(right: 150))),
+                          // Align(
+                          //   alignment: Alignment.center,
+                          //   child: DownloadCard(
+                          //     angle: 0,
+                          //     height: size.width * .50,
+                          //     imagepath: '$baseUrl${data[2].coverImage}',
+                          //     width: size.width * .35,
+                          //   ),
+                          // ),
+                        ],
                       ),
-                    ),
-                    Positioned(
-                      left: 117,
-                      top: 45,
-                      child: DownloadCard(
-                        angle: 0,
-                        imagepath:
-                            'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p16721608_p_v10_ab.jpg',
-                        height: size.width * .50,
-                        width: size.width * .35,
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                    );
+                  }),
+              // Padding(
+              //   padding: const EdgeInsets.only(top: 10),
+              //   child: Stack(
+              //     children: [
+              //       Center(
+              //         child: Padding(
+              //           padding: const EdgeInsets.all(15),
+              //           child: CircleAvatar(
+              //             backgroundColor:
+              //                 const Color.fromARGB(255, 68, 68, 68),
+              //             radius: size.width * .33,
+              //           ),
+              //         ),
+              //       ),
+              //       Positioned(
+              //         right: 33,
+              //         top: 62,
+              //         child: DownloadCard(
+              //           angle: pi / 16,
+              //           imagepath:
+              //               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqiBu7vjmwrGmXbOnrFxDgmmlYwh4OUomm9FnF0i8lvBuUyD3yWEd_38mV7nM_XQIktU8&usqp=CAU',
+              //           height: size.height * .20,
+              //           width: size.width * .30,
+              //           margin: EdgeInsets.only(left: 150),
+              //         ),
+              //       ),
+              //       Positioned(
+              //         // right: 35,
+              //         left: 33,
+              //         top: 62,
+
+              //         child: DownloadCard(
+              //           angle: pi / -16,
+              //           imagepath:
+              //               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKoHgb3BtJjDQQjxwNVTM6Lfbe2f9iIA4_mQ&s',
+              //           height: size.height * .20,
+              //           width: size.width * .30,
+              //           margin: EdgeInsets.only(right: 150),
+              //         ),
+              //       ),
+              //       Positioned(
+              //         left: 117,
+              //         top: 45,
+              //         child: DownloadCard(
+              //           angle: 0,
+              //           imagepath:
+              //               'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p16721608_p_v10_ab.jpg',
+              //           height: size.width * .50,
+              //           width: size.width * .35,
+              //         ),
+              //       )
+              //     ],
+              //   ),
+              // ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(top: 35),
                 child: Container(
                   width: double.maxFinite,
                   height: size.height / 15,
