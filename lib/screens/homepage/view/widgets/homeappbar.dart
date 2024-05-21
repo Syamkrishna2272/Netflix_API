@@ -23,7 +23,7 @@ class HomeAppbar extends StatelessWidget {
           child: Column(
             children: [
               AnimatedContainer(
-                duration: Duration(milliseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 color: isTransperant
                     ? Colors.black.withOpacity(.5)
                     : Colors.transparent,
@@ -64,11 +64,13 @@ class HomeAppbar extends StatelessWidget {
                           height: 35,
                           width: 35,
                           decoration: BoxDecoration(
+                            image: const DecorationImage(
+                                image: AssetImage('lib/assets/profile.png')),
                             borderRadius: BorderRadius.circular(4),
-                            color: Colors.greenAccent,
+                            // color: Colors.greenAccent,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                         ),
                       ],
@@ -81,7 +83,7 @@ class HomeAppbar extends StatelessWidget {
                   builder: (context, value, child) {
                     return AnimatedContainer(
                       curve: Curves.easeInCubic,
-                      duration: Duration(milliseconds: 300),
+                      duration: const Duration(milliseconds: 300),
                       height: value ? 50 : 0,
                       width: double.maxFinite,
                       color: isTransperant

@@ -41,10 +41,12 @@ AppBar appbarWidget(
         Container(
           margin: const EdgeInsets.symmetric(vertical: 12),
           decoration: BoxDecoration(
-              color: Colors.greenAccent,
+              image:
+                  const DecorationImage(image: AssetImage('lib/assets/profile.png')),
+              // color: Colors.greenAccent,
               borderRadius: BorderRadius.circular(6)),
           width: 28,
-        ),
+        ),  
         const SizedBox(
           width: 10,
         )
