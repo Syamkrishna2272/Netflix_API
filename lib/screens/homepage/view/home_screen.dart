@@ -11,7 +11,7 @@ class HomeScreen extends StatefulWidget {
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
-
+ 
 class _HomeScreenState extends State<HomeScreen> {
   final ScrollController scrollController = ScrollController();
 
@@ -54,51 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   mQuerySize: size,
                   future: topRatedMovies()),
 
-              // Tvcard(
-              //     size: size,
-              //     text: 'Bingeworthy TV Dramas',
-              //     future: TvDramas()),
-
               MovieWidget(
                   text: 'Up Coming Movies',
                   mQuerySize: size,
                   future: upcoming()),
-
-              // MovieWidget(
-              //     text: ' Top 10 Movies',
-              //     mQuerySize: size,
-              //     future: getnowplaying()),
-
-              // MovieWidget(
-              //     text: 'New Releases',
-              //     mQuerySize: size,
-              //     future: getnowplaying()),
-
-              // MovieWidget(
-              //     text: 'New Releases',
-              //     mQuerySize: size,
-              //     future: getnowplaying()),
-
-              // MovieWidget(
-              //     text: 'New Releases',
-              //     mQuerySize: size,
-              //     future: getnowplaying())
-              // MovieWidget(
-              //   text: 'New Releases',
-              //   mQuerySize: size,
-              // ),
-              // MovieWidget(
-              //   text: 'Top 10 Movies',
-              //   mQuerySize: size,
-              // ),
-              // MovieWidget(
-              //   text: 'Up Coming Movies',
-              //   mQuerySize: size,
-              // ),
-              // MovieWidget(
-              //   text: 'Airing Today',
-              //   mQuerySize: size,
-              // ),
             ],
           ),
           HomeAppbar(

@@ -1,8 +1,6 @@
 import 'dart:math';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:netflix/screens/downloadpage/view/imagecard.dart';
 import 'package:netflix/screens/new&hotpage/view/widgets/new&hot_appbar.dart';
 import 'package:netflix/service/api_service.dart';
@@ -87,7 +85,7 @@ class Downloadpage extends StatelessWidget {
                           ),
                           Positioned(
                             right: 33,
-                            top: 62 ,
+                            top: 62,
                             child: DownloadCard(
                               angle: pi / 16,
                               imagepath: '$baseUrl${data[0].coverImage}',
@@ -118,95 +116,15 @@ class Downloadpage extends StatelessWidget {
                               width: size.width * .35,
                             ),
                           )
-
-                          // Align(
-                          //     alignment: Alignment.center,
-                          //     child: DownloadCard(
-                          //         angle: pi / 16,
-                          //         imagepath: '$baseUrl${data[0].coverImage}',
-                          //         height: size.width * .45,
-                          //         width: size.width * .33,
-                          //         margin: const EdgeInsets.only(left: 150))),
-                          // Align(
-                          //     alignment: Alignment.center,
-                          //     child: DownloadCard(
-                          //         angle: pi / -16,
-                          //         imagepath: '$baseUrl${data[1].coverImage}',
-                          //         height: size.width * .45,
-                          //         width: size.width * .33,
-                          //         margin: const EdgeInsets.only(right: 150))),
-                          // Align(
-                          //   alignment: Alignment.center,
-                          //   child: DownloadCard(
-                          //     angle: 0,
-                          //     height: size.width * .50,
-                          //     imagepath: '$baseUrl${data[2].coverImage}',
-                          //     width: size.width * .35,
-                          //   ),
-                          // ),
                         ],
                       ),
                     );
                   }),
-              // Padding(
-              //   padding: const EdgeInsets.only(top: 10),
-              //   child: Stack(
-              //     children: [
-              //       Center(
-              //         child: Padding(
-              //           padding: const EdgeInsets.all(15),
-              //           child: CircleAvatar(
-              //             backgroundColor:
-              //                 const Color.fromARGB(255, 68, 68, 68),
-              //             radius: size.width * .33,
-              //           ),
-              //         ),
-              //       ),
-              //       Positioned(
-              //         right: 33,
-              //         top: 62,
-              //         child: DownloadCard(
-              //           angle: pi / 16,
-              //           imagepath:
-              //               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqiBu7vjmwrGmXbOnrFxDgmmlYwh4OUomm9FnF0i8lvBuUyD3yWEd_38mV7nM_XQIktU8&usqp=CAU',
-              //           height: size.height * .20,
-              //           width: size.width * .30,
-              //           margin: EdgeInsets.only(left: 150),
-              //         ),
-              //       ),
-              //       Positioned(
-              //         // right: 35,
-              //         left: 33,
-              //         top: 62,
-
-              //         child: DownloadCard(
-              //           angle: pi / -16,
-              //           imagepath:
-              //               'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKoHgb3BtJjDQQjxwNVTM6Lfbe2f9iIA4_mQ&s',
-              //           height: size.height * .20,
-              //           width: size.width * .30,
-              //           margin: EdgeInsets.only(right: 150),
-              //         ),
-              //       ),
-              //       Positioned(
-              //         left: 117,
-              //         top: 45,
-              //         child: DownloadCard(
-              //           angle: 0,
-              //           imagepath:
-              //               'https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p16721608_p_v10_ab.jpg',
-              //           height: size.width * .50,
-              //           width: size.width * .35,
-              //         ),
-              //       )
-              //     ],
-              //   ),
-              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 35),
                 child: Container(
-                  width: double.maxFinite,
-                  height: size.height / 15,
+                  width: 185,
+                  height: size.height / 18,
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(30),

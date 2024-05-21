@@ -47,7 +47,7 @@ class NewHotpage extends StatelessWidget {
                     customTab(text: '🔟 Top 10 Tv Shows'),
                     customTab(text: '🔟 Top 10 Movies')
                   ],
-                ),
+                ), 
               ),
             ),
           ),
@@ -55,8 +55,8 @@ class NewHotpage extends StatelessWidget {
             children: [
               FirstTabpage(future: upcoming()),
               SecondTabpage(future: getnowplaying()),
-              ThirdTabpage(future: TvDramas()),
-              FourthTabpage(future: topRatedMovies())
+              ThirdTabpage(future: airingToday()),
+              FourthTabpage(future: topRatedMovies()) 
             ],
           ),
         ),
