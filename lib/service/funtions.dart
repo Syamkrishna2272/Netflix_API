@@ -6,7 +6,8 @@ import 'package:netflix/model/search.dart';
 import 'package:netflix/service/api_service.dart';
 
 Future<List<Movie>> getnowplaying() async {
-  const url = 'https://api.themoviedb.org/3/trending/movie/day?$apikey';
+   const url = 'https://api.themoviedb.org/3/trending/movie/day?$apikey';
+
   final response = await http.get(
     Uri.parse(url),
     headers: {
@@ -39,6 +40,7 @@ Future<List<Movie>> newReleases() async {
 
 Future<List<Movie>> topRatedMovies() async {
   const url = 'https://api.themoviedb.org/3/movie/top_rated?$apikey';
+
   final response = await http.get(
     Uri.parse(url),
     headers: {
@@ -47,14 +49,18 @@ Future<List<Movie>> topRatedMovies() async {
       'accept': 'application/json',
     },
   );
-  final json = jsonDecode(response.body)['results'] as List;
+  final json = jsonDecode(response.body)['results'] as List; 
 
-  final result = json.map((e) => Movie.fromjason(e)).toList();
+  final result = json.map((e) => Movie.fromjason(e)).toList(); 
   return result;
-}
+} 
+
+
 
 
 Future<List<Movie>> airingToday() async {
+
+  
   const url = 'https://api.themoviedb.org/3/tv/airing_today?$apikey';
   final headers = {
     'Authorization':
